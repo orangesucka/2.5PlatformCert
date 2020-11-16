@@ -637,13 +637,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   liftSpeed: 2
   horizontalRaycastDistance: 20
-  verticalRaycastDistance: 20
+  verticalRaycastDistance: 10
   rayAngle: 0
   trans: {fileID: 0}
   groundFloor: {fileID: 0}
   topFloor: {fileID: 0}
-  originRight: {x: 286.3, y: -38.4, z: 1}
-  originUp: {x: 283.3, y: -24.6, z: 10}
+  originRight: {x: 286.3, y: -37.25, z: 1}
+  originUp: {x: 283.3, y: -22.36, z: 10}
+  originDown: {x: 283.3, y: -34.1, z: 10}
   goingUp: 1
   goingUp2: 0
   goingDown: 0

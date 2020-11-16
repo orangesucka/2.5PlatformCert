@@ -20,7 +20,6 @@ public class LiftsFloor : MonoBehaviour
     public Transform groundFloor;
     public Transform topFloor;
     public Vector3 originRight;
-    public Vector3 originUp;
     public bool goingUp;
     public bool goingUp2;
     public bool goingDown;
@@ -41,7 +40,6 @@ public class LiftsFloor : MonoBehaviour
     {
         if(transform.position.y <= groundFloor.position.y)
         {
-            Debug.Log("Ground Floor, Please get off");
             goingDown = false;
             goingUp = true;
         }
@@ -51,7 +49,6 @@ public class LiftsFloor : MonoBehaviour
         }
         if(transform.position.y >= topFloor.position.y)
         {
-            Debug.Log("Do something Please");
             goingDown = true;
             goingUp = false;
             goingUp2 = false;
@@ -66,17 +63,18 @@ public class LiftsFloor : MonoBehaviour
         }
         else if(goingDown == true)
         {
-            transform.position = Vector3.MoveTowards(transform.position, groundFloor.position, liftSpeed * 1 * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, groundFloor.position, liftSpeed * Time.deltaTime);
         }
     }
     public void OnDrawGizmos()
     {
-        Quaternion spreadAngle = Quaternion.AngleAxis(rayAngle, new Vector3(1, 0, 0));
+        
+        //Quaternion spreadAngle = Quaternion.AngleAxis(rayAngle, new Vector3(1, 0, 0));
         Vector3 noAngle = transform.forward;
-        Vector3 nintyAngle = transform.up*(-1);
+        //Vector3 nintyAngle = transform.up*(-1);
 
         RaycastHit hitDraw;
-
+        
         bool horizontalDraw = Physics.Raycast(transform.position + originRight, noAngle, out hitDraw, horizontalRaycastDistance);
         if (horizontalDraw)
         {
@@ -84,7 +82,7 @@ public class LiftsFloor : MonoBehaviour
             {
                 Gizmos.color = Color.red;
                 Gizmos.DrawRay(transform.position + originRight, noAngle * hitDraw.distance);
-                StartCoroutine(ElevatorPause());
+                StartCoroutine(ElevatorUpPause());
             }
         }
         else
@@ -97,30 +95,16 @@ public class LiftsFloor : MonoBehaviour
                 goingUp2 = false;
             }
         }
-
-        bool verticalDraw = Physics.Raycast(transform.position + originUp, nintyAngle, out hitDraw, verticalRaycastDistance);
-        if (verticalDraw)
-        {
-            Gizmos.color = Color.red;
-            Gizmos.DrawRay(transform.position + originUp, nintyAngle * hitDraw.distance);
-            goingDown = false;
-            goingUp = true;
-        }
-        else
-        {
-            Gizmos.color = Color.green;
-            Gizmos.DrawRay(transform.position + originUp, nintyAngle * verticalRaycastDistance);
-        }
     }
-
-    IEnumerator ElevatorPause()
+        
+    IEnumerator ElevatorUpPause()
     {
-        if (goingDown == false)
-        {
-            goingUp = false;
-            yield return new WaitForSeconds(5f);
-            goingUp2 = true;
-        }
+        goingUp = false;
+        yield return new WaitForSeconds(5f);
+        goingUp2 = true;
+        yield return new WaitForSeconds(.25f);
+        goingUp2 = false;
+        
     }
 
     //Elevator Player Smooth Move

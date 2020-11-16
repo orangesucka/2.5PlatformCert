@@ -48,12 +48,12 @@ public class Player : MonoBehaviour
         if (chrtrCntrlr.isGrounded == true)
         {
             direction = new Vector3(0, 0, h);
+            velocity = direction * speed;
             charAnimator.SetFloat("Speed", /*Mathf.Abs*/(h));
             charAnimator.SetBool("RunJumpForward", false);
             charAnimator.SetBool("RunJumpBack", false);
             charAnimator.SetBool("UpJump", false);
             charAnimator.SetBool("ClimbUp", false);
-            velocity = direction * speed;
 
             if (Input.GetKeyDown(KeyCode.Space) && /*Mathf.Abs*/(h) > 0.1f)
             {
@@ -62,7 +62,7 @@ public class Player : MonoBehaviour
                 charAnimator.SetBool("RunJumpForward", true);
             }
 
-            if(Input.GetKeyDown(KeyCode.Space) && h < 0f)
+            if (Input.GetKeyDown(KeyCode.Space) && h < 0f)
             {
                 verticalSpeed = jumpHeight;
                 //Trigger back jump animation
@@ -86,16 +86,20 @@ public class Player : MonoBehaviour
         {
             verticalSpeed -= gravity;
         }
-        velocity.y = verticalSpeed;
-        chrtrCntrlr.Move(velocity * Time.deltaTime); ;
+        if(chrtrCntrlr.enabled == true)
+        {
+            velocity.y = verticalSpeed;
+            chrtrCntrlr.Move(velocity * Time.deltaTime); }
+
     }
 
     public void GrabLedge(Vector3 handPosition, Ledge currentLedge)
     {
+        Debug.Log("Bam! Collision!");
         chrtrCntrlr.enabled = false;
         charAnimator.SetBool("GrabLedge", true);
         charAnimator.SetFloat("Speed", 0.0f);
-        charAnimator.SetBool("RunJumpforward", false);
+        charAnimator.SetBool("RunJumpForward", false);
         
         onLedge = true;
         transform.position = handPosition;
