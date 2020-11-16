@@ -23,7 +23,6 @@ public class ClimbUpScript : StateMachineBehaviour
         var player = animator.gameObject.transform.parent.GetComponent<Player>();
         if (player != null)
         {
-            Debug.Log("Are you being Called");
             player.ClimbUpComplete();
         }
         //Commmunicate with the player class

@@ -64,10 +64,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\GameDevHQ\FileBase\Projects\Tutorials\Starter_Files\2_5D_Certification_Starter\Scripts\AnimationScripts\ClimbUpScript.cs" />
+    <Compile Include="Assets\GameDevHQ\FileBase\Projects\Tutorials\Starter_Files\2_5D_Certification_Starter\Scripts\CollectibleScript.cs" />
     <Compile Include="Assets\GameDevHQ\FileBase\Projects\Tutorials\Starter_Files\2_5D_Certification_Starter\Scripts\Floors.cs" />
     <Compile Include="Assets\GameDevHQ\FileBase\Projects\Tutorials\Starter_Files\2_5D_Certification_Starter\Scripts\Ledge.cs" />
     <Compile Include="Assets\GameDevHQ\FileBase\Projects\Tutorials\Starter_Files\2_5D_Certification_Starter\Scripts\LiftsFloor.cs" />
     <Compile Include="Assets\GameDevHQ\FileBase\Projects\Tutorials\Starter_Files\2_5D_Certification_Starter\Scripts\Player.cs" />
+    <Compile Include="Assets\GameDevHQ\FileBase\Projects\Tutorials\Starter_Files\2_5D_Certification_Starter\Scripts\UIManager.cs" />
     <None Include="Assets\GameDevHQ\FileBase\Plugin\README.txt" />
     <None Include="Assets\Genesis_Hair\Shader\gHairShader.shader" />
     <Reference Include="UnityEngine">

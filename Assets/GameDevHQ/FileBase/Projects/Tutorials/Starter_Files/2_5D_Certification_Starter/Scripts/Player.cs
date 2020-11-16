@@ -16,12 +16,14 @@ public class Player : MonoBehaviour
     public float rayAngle;
     public float rayCastRightDistance;
     public float rayCastDownDistance;
+    public int collectible;
     public bool rayBool;
     public bool onLedge;
     public Vector3 startingPosition;
     public Vector3 direction;
     public Vector3 velocity;
     public CharacterController chrtrCntrlr;
+    public UIManager uiManager;
     public Animator charAnimator;
     public Ledge activeLedge;    
 
@@ -30,6 +32,12 @@ public class Player : MonoBehaviour
     {
         chrtrCntrlr = GetComponent<CharacterController>();
         charAnimator = GetComponentInChildren<Animator>();
+        uiManager = GameObject.Find("Canvas").GetComponent<UIManager>();
+        if(uiManager == null)
+        {
+            Debug.Log("The UIManager is null");
+        }
+        
     }
 
     // Update is called once per frame
@@ -95,7 +103,6 @@ public class Player : MonoBehaviour
 
     public void GrabLedge(Vector3 handPosition, Ledge currentLedge)
     {
-        Debug.Log("Bam! Collision!");
         chrtrCntrlr.enabled = false;
         charAnimator.SetBool("GrabLedge", true);
         charAnimator.SetFloat("Speed", 0.0f);
@@ -108,7 +115,6 @@ public class Player : MonoBehaviour
 
     public void ClimbUpComplete()
     {
-        Debug.Log("ClimbUpComplete()");
         transform.position = activeLedge.StandingPosition();
         charAnimator.SetBool("GrabLedge", false);
         chrtrCntrlr.enabled = true;        
@@ -121,7 +127,6 @@ public class Player : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
-                Debug.Log("You pressed the E key");
                 charAnimator.SetBool("ClimbUp", true);
             }
         }
@@ -167,5 +172,16 @@ public class Player : MonoBehaviour
         {
             transform.position = startingPosition;
         }
+    }
+
+    public void AddCollectible()
+    {
+        collectible++;
+        uiManager.UpdateCollectiblesDisplayed(collectible);
+    }
+
+    public int CollectibleCount()
+    {
+        return collectible;
     }
 }
