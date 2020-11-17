@@ -12599,7 +12599,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73767af5ccf0a814393a236ee999c9cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  handPositionFineTuning: {x: 0, y: 0, z: 0}
+  handPositionFineTuning: {x: 0, y: 0.5, z: 0}
   feetPositionFineTuning: {x: 0, y: 7, z: 1}
   player: {fileID: 0}
 --- !u!1 &6788686498247353431
@@ -20194,7 +20194,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9006014443767384672}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 65.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:

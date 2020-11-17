@@ -9,6 +9,6 @@ public class UIManager : MonoBehaviour
 
     public void UpdateCollectiblesDisplayed(int collectible)
     {
-        collectibleText.text = "Collectible: " + collectible.ToString();
+        collectibleText.text = "Collectibles: " + collectible.ToString();
     }
 }
