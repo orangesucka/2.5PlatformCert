@@ -86,16 +86,20 @@ public class Player : MonoBehaviour
         {
             verticalSpeed -= gravity;
         }
-        velocity.y = verticalSpeed;
-        chrtrCntrlr.Move(velocity * Time.deltaTime); ;
+        if (chrtrCntrlr.enabled == true)
+        {
+            velocity.y = verticalSpeed;
+            chrtrCntrlr.Move(velocity * Time.deltaTime);
+        }
     }
 
     public void GrabLedge(Vector3 handPosition, Ledge currentLedge)
     {
         chrtrCntrlr.enabled = false;
+        //velocity = Vector3.zero;
         charAnimator.SetBool("GrabLedge", true);
         charAnimator.SetFloat("Speed", 0.0f);
-        charAnimator.SetBool("RunJumpforward", false);
+        charAnimator.SetBool("RunJumpForward", false);
         
         onLedge = true;
         transform.position = handPosition;
