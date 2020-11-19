@@ -189,8 +189,8 @@ MonoBehaviour:
     y: 464
     width: 1048
     height: 483
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 201, y: 221}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 13}
   m_Panes:
   - {fileID: 13}
@@ -479,11 +479,19 @@ MonoBehaviour:
   m_Rotation:
     m_Target: {x: -0.025125518, y: 0.6925688, z: -0.024083143, w: -0.72055066}
     speed: 2
+<<<<<<< HEAD
     m_Value: {x: -0.025124814, y: 0.6925494, z: -0.024082469, w: -0.72053045}
   m_Size:
     m_Target: 39.33469
     speed: 2
     m_Value: 39.33469
+=======
+    m_Value: {x: -0.049670655, y: 0.78848046, z: -0.064261675, w: -0.60967356}
+  m_Size:
+    m_Target: 44.626945
+    speed: 2
+    m_Value: 42.70521
+>>>>>>> dev
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -669,9 +677,15 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
+<<<<<<< HEAD
       m_SelectedIDs: 64fbffff
       m_LastClickedID: -1180
       m_ExpandedIDs: 68fbffff563d0000
+=======
+      m_SelectedIDs: f2310000
+      m_LastClickedID: 0
+      m_ExpandedIDs: f8e9ffff
+>>>>>>> dev
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -759,7 +773,8 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SkipHidden: 0
     m_SearchArea: 1
-    m_Folders: []
+    m_Folders:
+    - Assets/GameDevHQ/FileBase/Projects/Tutorials/Starter_Files/2_5D_Certification_Starter/Scripts
   m_ViewMode: 0
   m_StartGridSize: 64
   m_LastFolders: []
@@ -771,7 +786,11 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 82090000
     m_LastClickedID: 2434
+<<<<<<< HEAD
     m_ExpandedIDs: 00000000543b00000e54000010540000125400001454000016540000185400001a5400001c5400001e54000020540000225400002454000026540000285400002a540000
+=======
+    m_ExpandedIDs: 00000000004b000026620000286200002a6200002c6200002e62000030620000326200003462000036620000386200003a6200003c6200003e6200004062000042620000
+>>>>>>> dev
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -796,10 +815,17 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_AssetTreeState:
+<<<<<<< HEAD
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: f4e9ffff
     m_LastClickedID: 0
     m_ExpandedIDs: 00000000543b00000e54000010540000125400001454000016540000185400001a5400001c5400001e54000020540000225400002454000026540000285400002a540000
+=======
+    scrollPos: {x: 0, y: 92}
+    m_SelectedIDs: 
+    m_LastClickedID: 0
+    m_ExpandedIDs: ffffffff00000000004b000026620000286200002a6200002c6200002e62000030620000326200003462000036620000386200003a6200003c6200003e620000406200004262000070620000
+>>>>>>> dev
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
