@@ -1,13 +1,7 @@
-﻿//using GameDevHQ.Filebase.DataModels;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.Net.NetworkInformation;
 using System.Security.Cryptography;
-//using System.Threading;
-//using TMPro;
-//using TreeEditor;
-//using UnityEditor.Rendering;
-//using UnityEditor.ShaderGraph;
 using UnityEngine;
 
 public class LiftsFloor : MonoBehaviour
