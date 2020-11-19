@@ -18,16 +18,19 @@ public class Player : MonoBehaviour
     public float rayCastDownDistance;
     public bool rayBool;
     public bool onLedge;
+    public int spheres;
     public Vector3 startingPosition;
     public Vector3 direction;
     public Vector3 velocity;
     public CharacterController chrtrCntrlr;
     public Animator charAnimator;
-    public Ledge activeLedge;    
+    public Ledge activeLedge;
+    public UIManager uiManager;
 
     // Start is called before the first frame update
     void Start()
     {
+        uiManager = GameObject.Find("Canvas").GetComponent<UIManager>();
         chrtrCntrlr = GetComponent<CharacterController>();
         charAnimator = GetComponentInChildren<Animator>();
     }
@@ -96,7 +99,7 @@ public class Player : MonoBehaviour
     public void GrabLedge(Vector3 handPosition, Ledge currentLedge)
     {
         chrtrCntrlr.enabled = false;
-        //velocity = Vector3.zero;
+        charAnimator.SetBool("UpJump", false);
         charAnimator.SetBool("GrabLedge", true);
         charAnimator.SetFloat("Speed", 0.0f);
         charAnimator.SetBool("RunJumpForward", false);
@@ -167,5 +170,16 @@ public class Player : MonoBehaviour
         {
             transform.position = startingPosition;
         }
+    }
+
+    public void addSpheres()
+    {
+        spheres++;
+        uiManager.UpdateSpheresDisplay(spheres);
+    }
+    
+    public int SphereCount()
+    {
+        return spheres;
     }
 }

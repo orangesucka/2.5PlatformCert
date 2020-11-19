@@ -128,7 +128,7 @@ GameObject:
   - component: {fileID: 2391642391410654800}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -190,12 +190,14 @@ MonoBehaviour:
   rayCastDownDistance: 1
   rayBool: 0
   onLedge: 0
+  spheres: 0
   startingPosition: {x: 0, y: 70, z: 91}
   direction: {x: 0, y: 0, z: 0}
   velocity: {x: 0, y: 0, z: 0}
   chrtrCntrlr: {fileID: 2391642391410654801}
   charAnimator: {fileID: 506903253343042084}
   activeLedge: {fileID: 0}
+  uiManager: {fileID: 0}
 --- !u!1 &2391642391647906147
 GameObject:
   m_ObjectHideFlags: 0
