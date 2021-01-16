@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Ledge : MonoBehaviour
 {
-    private Vector3 handPosition, feetPosition;
+    public Vector3 handPosition, feetPosition;
     public Vector3 handPositionFineTuning, feetPositionFineTuning;
     public Player player;
     private void OnTriggerEnter(Collider other)

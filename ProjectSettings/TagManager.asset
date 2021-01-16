@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ledge_Grab_Checker
+  - Ladder_Grab_Checker
   layers:
   - Default
   - TransparentFX

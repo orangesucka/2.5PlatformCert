@@ -1,4 +1,5 @@
 ﻿using JetBrains.Annotations;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +10,7 @@ using UnityEngine.VFX;
 public class Player : MonoBehaviour
 {
     public float speed;
+    public float ladderSpeed;
     public float jumpHeight;
     public float gravity;
     public float verticalSpeed;
@@ -18,14 +20,20 @@ public class Player : MonoBehaviour
     public float rayCastDownDistance;
     public bool rayBool;
     public bool onLedge;
+    public bool onLadder;
+    private bool offLadder;
     public int spheres;
     public Vector3 startingPosition;
     public Vector3 direction;
     public Vector3 velocity;
+    public Vector3 topOfLadder;
     public CharacterController chrtrCntrlr;
+
     public Animator charAnimator;
     public Ledge activeLedge;
     public UIManager uiManager;
+    public Ladder activeLadder;
+    //public TopOfLadder topOfLadderScript;
 
     // Start is called before the first frame update
     void Start()
@@ -40,14 +48,15 @@ public class Player : MonoBehaviour
     {
         CalculateMovement();
         Climbing();
+        ClimbingLadder();
+        GetOffLadder();
+        NinjaRoll();
         Death();
     }
 
-     public void CalculateMovement()
-    {
-
+    public void CalculateMovement()
+    { 
         float h = Input.GetAxisRaw("Horizontal");
-
         if (chrtrCntrlr.isGrounded == true)
         {
             direction = new Vector3(0, 0, h);
@@ -56,7 +65,9 @@ public class Player : MonoBehaviour
             charAnimator.SetBool("RunJumpBack", false);
             charAnimator.SetBool("UpJump", false);
             charAnimator.SetBool("ClimbUp", false);
+            //charAnimator.SetBool("ClimbingOffLadder", false);
             velocity = direction * speed;
+            onLedge = false;
 
             if (Input.GetKeyDown(KeyCode.Space) && /*Mathf.Abs*/(h) > 0.1f)
             {
@@ -65,7 +76,7 @@ public class Player : MonoBehaviour
                 charAnimator.SetBool("RunJumpForward", true);
             }
 
-            if(Input.GetKeyDown(KeyCode.Space) && h < 0f)
+            if (Input.GetKeyDown(KeyCode.Space) && h < 0f)
             {
                 verticalSpeed = jumpHeight;
                 //Trigger back jump animation
@@ -95,6 +106,53 @@ public class Player : MonoBehaviour
             chrtrCntrlr.Move(velocity * Time.deltaTime);
         }
     }
+    public void NinjaRoll()
+    {
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            Debug.Log("Left Shift has been pressed");
+            charAnimator.SetBool("NinjaRollBool", true);
+        }
+        else
+        {
+            charAnimator.SetBool("NinjaRollBool", false);
+        }
+    }
+    public void GrabLadder(Vector3 ladderHandPos, Ladder currentLadder)
+    {
+        Debug.Log("OnLadder is true");
+        onLadder = true;
+        activeLadder = currentLadder;
+        gravity = 0;
+    }
+    
+    public void UnGrabLadder(Vector3 ladderHandPos, Ladder currentLadder)
+    {
+        onLadder = false;
+        offLadder = true;
+        chrtrCntrlr.enabled = true;
+        gravity = 1;
+        direction = Vector3.zero;
+        verticalSpeed -= gravity;
+        velocity.y = verticalSpeed;
+        chrtrCntrlr.Move(velocity * Time.deltaTime);
+        Debug.Log(chrtrCntrlr.isGrounded);
+        Debug.Log("Onladder is false");
+    }
+
+    public void GetOffLadder()
+    {
+        if (offLadder == true)
+        {
+
+            //chrtrCntrlr.enabled = false;  //This Breaks the game
+
+            charAnimator.SetBool("ClimbingOffLadder", true);
+
+            //Turn this back on maybe?
+            //charAnimator.SetBool("ClimbingLadder", false);
+        }
+    }
 
     public void GrabLedge(Vector3 handPosition, Ledge currentLedge)
     {
@@ -103,7 +161,7 @@ public class Player : MonoBehaviour
         charAnimator.SetBool("GrabLedge", true);
         charAnimator.SetFloat("Speed", 0.0f);
         charAnimator.SetBool("RunJumpForward", false);
-        
+
         onLedge = true;
         transform.position = handPosition;
         activeLedge = currentLedge;
@@ -111,15 +169,24 @@ public class Player : MonoBehaviour
 
     public void ClimbUpComplete()
     {
-        Debug.Log("ClimbUpComplete()");
+        //Debug.Log("ClimbUpComplete()");
         transform.position = activeLedge.StandingPosition();
         charAnimator.SetBool("GrabLedge", false);
-        chrtrCntrlr.enabled = true;        
+        chrtrCntrlr.enabled = true;
+    }
+    public void ClimbUpLadderComplete()
+    {
+        Debug.Log("ClimbUpComplete()");
+        //onLadder = false;
+        transform.position = activeLadder.StandingLadderPosition();
+        
+        // This maybe needs to go back off
+        charAnimator.SetBool("ClimbingLadder", false);
+        chrtrCntrlr.enabled = true;
     }
 
     public void Climbing()
     {
-        float v = Input.GetAxisRaw("Vertical");
         if (onLedge == true)
         {
             if (Input.GetKeyDown(KeyCode.E))
@@ -129,6 +196,40 @@ public class Player : MonoBehaviour
             }
         }
     }
+    public void ClimbingLadder()
+    {
+        if (onLadder == true)
+        {
+            charAnimator.SetFloat("Speed", 0);   
+            float v = Input.GetAxisRaw("Vertical");
+            direction = new Vector3(0, v, 0);
+            velocity = direction * ladderSpeed;
+            verticalSpeed = velocity.y;
+            chrtrCntrlr.Move(velocity * ladderSpeed);
+            
+            if (velocity.y > .1f)
+            {
+                charAnimator.speed = 1;
+                charAnimator.SetBool("ClimbingLadder", true);
+                charAnimator.SetBool("ClimbDownLadder", false);
+            }
+            else if(charAnimator.GetBool("ClimbingLadder") == true && velocity.y == 0)
+            {
+                charAnimator.speed = 0;
+            }
+            if (velocity.y < -.1f)
+            {
+                charAnimator.speed = 1;
+                charAnimator.SetBool("ClimbDownLadder", true);
+                charAnimator.SetBool("ClimbingLadder", false);
+            }
+            else if (charAnimator.GetBool("ClimbDownLadder") == true && velocity.y == 0)
+            {
+                charAnimator.speed = 0;
+            }
+        }
+    }
+
     public void OnDrawGizmos()
     {
         Vector3 noAngle = transform.forward;
@@ -166,7 +267,7 @@ public class Player : MonoBehaviour
     }
     public void Death()
     {
-        if(transform.position.y <= 0f)
+        if (transform.position.y <= 0f)
         {
             transform.position = startingPosition;
         }
@@ -177,7 +278,7 @@ public class Player : MonoBehaviour
         spheres++;
         uiManager.UpdateSpheresDisplay(spheres);
     }
-    
+
     public int SphereCount()
     {
         return spheres;
