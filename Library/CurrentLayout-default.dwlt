@@ -46,7 +46,7 @@ MonoBehaviour:
     y: 0
     width: 1920
     height: 997
-  m_MinSize: {x: 875, y: 300}
+  m_MinSize: {x: 875, y: 521}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &3
 MonoBehaviour:
@@ -113,10 +113,17 @@ MonoBehaviour:
     y: 30
     width: 1920
     height: 947
+<<<<<<< HEAD
   m_MinSize: {x: 707, y: 471}
   m_MaxSize: {x: 18003, y: 14021}
   vertical: 0
   controlID: 110
+=======
+  m_MinSize: {x: 709, y: 471}
+  m_MaxSize: {x: 18004, y: 14021}
+  vertical: 0
+  controlID: 35
+>>>>>>> dev
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -141,7 +148,11 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 321}
   m_MaxSize: {x: 4001, y: 8021}
   vertical: 1
+<<<<<<< HEAD
   controlID: 180
+=======
+  controlID: 36
+>>>>>>> dev
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -669,9 +680,15 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
+<<<<<<< HEAD
       m_SelectedIDs: 523c0000
       m_LastClickedID: 0
       m_ExpandedIDs: 568cffff009dfffff65a0000805c0000
+=======
+      m_SelectedIDs: b43b0000
+      m_LastClickedID: 15284
+      m_ExpandedIDs: 6afbffffec3c0000
+>>>>>>> dev
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -772,7 +789,11 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 82090000
     m_LastClickedID: 2434
+<<<<<<< HEAD
     m_ExpandedIDs: 00000000e63b0000f2710000f4710000f6710000f8710000fa710000fc710000fe71000000720000027200000472000006720000087200000a7200000c7200000e72000010720000127200001472000016720000187200001a7200001c720000
+=======
+    m_ExpandedIDs: 00000000783a0000185300001a5300001c5300001e53000020530000225300002453000026530000285300002a5300002c5300002e53000030530000325300003453000036530000385300003a5300003c5300003e5300004053000042530000
+>>>>>>> dev
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -800,7 +821,11 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
+<<<<<<< HEAD
     m_ExpandedIDs: ffffffff00000000e63b0000f2710000f6710000fa710000fc710000fe71000004720000067200000a720000107200001272000016720000187200001a7200001c72000050720000fe96000004970000
+=======
+    m_ExpandedIDs: ffffffff00000000783a0000185300001c5300001e53000020530000225300002453000026530000285300002a5300002c5300002e53000030530000325300003453000036530000385300003a5300003c5300003e5300004053000042530000
+>>>>>>> dev
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: Cinemachine
